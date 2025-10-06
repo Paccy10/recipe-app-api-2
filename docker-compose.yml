@@ -18,6 +18,7 @@ services:
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASSWORD=change_me
+      - DEBUG=1
     depends_on:
       - db
 
