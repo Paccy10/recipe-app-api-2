@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.microservice.name }}
+  namespace: {{ .Values.microservice.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.microservice.name }}
+  serviceName: {{ .Values.microservice.name }}
+  replicas: {{ .Values.microservice.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.microservice.name }}
+    spec:
+      containers:
+        - name: {{ .Values.microservice.name }}
+          image: {{ .Values.workload.image }}
+          envFrom:
+            - secretRef:
+                name: {{ printf "%s-secret" .Values.microservice.name }}
+          ports:
+            - containerPort: {{ .Values.workload.port }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ printf "%s-persistent-storage" .Values.microservice.name }}
+      spec:
+        accessModes: 
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: standard

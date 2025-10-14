@@ -1,0 +1,28 @@
+microservice: # General service details
+  name: recipe-app-api
+  namespace: recipe-app
+  replicas: 2
+
+workload: # Container specific configurations
+  image: recipe-app-api:latest
+  port: 8000
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 128m
+    limits:
+      memory: 128Mi
+      cpu: 128m
+  livenessDelay: 15
+  allowedHosts:
+    - myapp.local
+    - localhost
+    - 127.0.0.1
+
+env: # Environment variables for the container
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_NAME: devdb
+  DB_USER: devuser
+  DB_PASSWORD: change_me
+  DJANGO_SECRET_KEY: change_me

@@ -31,6 +31,7 @@ urlpatterns = [
     ),
     path("api/users/", include("users.urls")),
     path("api/recipes/", include("recipe.urls")),
+    path("api/health/", include("health_check.urls")),
 ]
 
 if settings.DEBUG:

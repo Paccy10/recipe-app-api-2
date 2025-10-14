@@ -1,0 +1,4 @@
+apiVersion: v2
+name: recipe-app-postgres
+description: A Helm chart for deploying PostgreSQL as the database for the Recipe App API.
+version: 1.0.0

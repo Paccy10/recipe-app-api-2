@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-config" .Values.microservice.name }}
+  namespace: {{ .Values.microservice.namespace }}
+data:
+  DB_HOST: {{ .Values.env.DB_HOST }}
+  DB_PORT: {{ .Values.env.DB_PORT | quote }}
+  DJANGO_ALLOWED_HOSTS: {{ .Values.workload.allowedHosts | join "," | quote }}

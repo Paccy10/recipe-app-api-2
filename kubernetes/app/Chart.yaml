@@ -1,0 +1,4 @@
+apiVersion: v2
+name: recipe-app-api
+description: A Helm chart for deploying the Recipe App API, a backend service for managing recipes.
+version: 1.0.0
