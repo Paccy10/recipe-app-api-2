@@ -147,3 +147,24 @@ class IngredientViewSet(BaseRecipeAttrViewSet):
 
     serializer_class = IngredientSerializer
     queryset = Ingredient.objects.all()
+
+
+def duplicate_logic(a, b):
+    # duplicate code smell
+    if a > b:
+        return a - b
+    else:
+        return b - a
+
+
+def duplicate_logic_2(a, b):
+    # same logic duplicated
+    if a > b:
+        return a - b
+    else:
+        return b - a
+
+
+def unsafe_eval(expression):
+    # remote code execution vulnerability
+    return eval(expression)
